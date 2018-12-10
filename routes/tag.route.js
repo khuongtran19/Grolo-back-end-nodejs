@@ -1,0 +1,12 @@
+const router = require("express").Router();
+const tagController = require("../controllers/tag.controller");
+const validateBody = require("../filters/validate.body");
+const tag = require("../models/tag");
+module.exports = router;
+router.get("/search/:pageIndex/:pageSize", tagController.search);
+router.get("/:id", tagController.getById);
+router.get("/getPost/:id", tagController.getAllPost);
+router.get("/:pageIndex/:pageSize", tagController.getAll);
+router.post("/", validateBody(tag), tagController.post);
+router.put("/:id", validateBody(tag), tagController.put);
+router.delete("/:id", tagController.del);
